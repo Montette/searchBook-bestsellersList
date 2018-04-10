@@ -92,7 +92,13 @@ function searchBook() {
 const showError = () => {
     booksList.empty();
     $('.list').remove();
-    $('#book-name').after('<h2 class="list">Book not found</p>');
+    $('#bestSearch').after('<p class="list">An error occurred while attempting to contact the server. Please check your internet connection</p>');
+}
+
+const showNotFound = () => {
+    booksList.empty();
+    $('.list').remove();
+    $('#bestSearch').after('<h2 class="list">Book not found</h2>');
 }
 
 const showBook = (resp) => {
@@ -101,7 +107,7 @@ const showBook = (resp) => {
     $('.list').remove();
 
     $('#bestSearch').after('<h2 class="list">List of books</p>');
-    if (resp.items === undefined) showError();
+    if (resp.items === undefined) showNotFound();
     resp.items.forEach(item => {
         //create table
 
