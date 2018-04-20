@@ -3,30 +3,94 @@
 
 <head>
     <meta charset="UTF-8">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <!--    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">-->
     <link href="https://fonts.googleapis.com/css?family=Exo:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Document</title>
 </head>
 
 <body>
- 
-        <header class="header">
-            <h1 class="title">Book Search</h1>
-            <button id="search" class="search">Search a book</button>
-            <input id="book-name" type="text" /> 
-            <button id="bestSearch" class="search bestSearch">Show New York Times Bestsellers</button>
-        </header>
-        <div id="books" class="container">
+
+    <header class="header">
+      
+  
+       <div class="header__container">
+        <h1 class="title">Book Search</h1>
+        <button id="search" class="search">Search a book</button>
+        <input id="book-name" type="text" />
+        <button id="bestSearch" class="search bestSearch">Show New York Times Bestsellers</button>
         </div>
-        
-        
-       
-        
-        
-        <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
-        <script src="script.js"></script>
+        </header>
+    
+    <div id="books" class="container">
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js" integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+    <script id="bestsellersTemplate" type="text/x-handlebars-template">
+
+<!--        <h3 class="category text-center">{{categoryTitle}} </h3>-->
+
+        <div class="position row">
+            <div class="position__rank">
+                <p>{{bestsellerRank}}</p>
+            </div>
+            <div class="position__cover col">
+
+                <img class="position__img" src={{bestsellerImage}}>
+            </div>
+            <div class="position__description col">
+                <p class="position__weeks">{{weekOnlist}} weeks on the list</p>
+                <h4 class="position__title">{{bestsellerTitle}}</h4>
+                <h5 class="position__author">by <span class="color">{{bestsellerAuthor}}</span></h5>
+                <p class="position__publisher">Publisher: <span class="color">{{bestsellerPublisher}}</span></p>
+                <p class="position__subTitle position__subTitle-about">Description: </p>
+                <p class="position__about">{{bestsellerDescription}}</p>
+
+                <div class="position__buy">
+                    <p class="position__subTitle">Buy:</p>
+                    <ul>
+                        <li> <a href={{bestSellerlinkUrl1}} target="_blank">  {{bestSellerlink1}}</a></li>
+                        <li> <a href={{bestSellerlinkUrl2}} target="_blank"> {{bestSellerlink2}}</a> </li>
+                        <li> <a href={{bestSellerlinkUrl3}} target="_blank">  {{bestSellerlink3}}</a></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </script>
+    <script id="booksTemplate" type="text/x-handlebars-template">
+
+        <div class="position position--list row">
+            <div class="position__cover col">
+                <img src={{volumeImage}} alt="" class="position__imgList">
+            </div>
+            <div class="position__description col">
+                <h4 class="position__title position__title--search">{{volumeTitle}}</h4>
+                <h5 class="position__author position__author--search">by <span class="color">{{volumeAuthors}}</span></h5>
+                  <p class="position__publisher position__publisher--search">Publisher: <span class="color">{{volumePublisher}}</span></p>
+                   <p class="position__subTitle position__subTitle-search">Description: </p>
+                <p class="position--list__about">
+                {{volumeInfo}}
+                </p>
+                <a href={{volumeLink}} target="blank"> Read more</a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </script>
+    <script src="scripts/script.js"></script>
 
 </body>
 
