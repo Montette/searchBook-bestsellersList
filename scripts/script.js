@@ -43,6 +43,7 @@ function showBest(data) {
 
 
     for (let i = 0; i <= data.results.lists.length - 1; i++) {
+        content = '';
 
 
         //        context = {
